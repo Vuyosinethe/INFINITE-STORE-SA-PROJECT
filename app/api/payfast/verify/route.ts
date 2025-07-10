@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     console.log("=== PayFast Verification Request ===")
     console.log("Payment ID:", paymentId)
     console.log("Reference:", reference)
-    console.log("Environment:", process.env.NODE_ENV)
+    console.log("NODE_ENV:", process.env.NODE_ENV)
 
     if (!paymentId && !reference) {
       console.log("❌ Missing payment ID and reference")
@@ -24,19 +24,26 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Missing PayFast configuration" }, { status: 500 })
     }
 
-    // Check if this is a sandbox environment
-    const isProduction = process.env.NODE_ENV === "production"
+    // Determine if this is sandbox based on merchant ID (sandbox IDs are typically 10000100)
+    // or if we're in development mode
+    const isSandbox = merchantId === "10000100" || process.env.NODE_ENV === "development"
+    const isProduction = process.env.NODE_ENV === "production" && merchantId !== "10000100"
 
-    console.log("🔍 Environment check:", { isProduction, merchantId: merchantId.substring(0, 8) + "..." })
+    console.log("🔍 Environment detection:", {
+      NODE_ENV: process.env.NODE_ENV,
+      merchantId: merchantId.substring(0, 8) + "...",
+      isSandbox,
+      isProduction,
+    })
 
-    // For sandbox environment, handle the R 0.00 payment issue
-    if (!isProduction) {
-      console.log("🧪 Sandbox environment - applying special handling")
+    // Handle sandbox payments (including when NODE_ENV is production but using sandbox merchant ID)
+    if (isSandbox || !isProduction) {
+      console.log("🧪 Sandbox environment detected - applying special handling")
 
       // If we have a reference that looks like our order format, treat as successful
       // This bypasses PayFast's R 0.00 validation issue in sandbox
       if (reference && reference.startsWith("INF")) {
-        console.log("✅ Valid order reference detected in sandbox:", reference)
+        console.log("✅ Valid order reference detected:", reference)
 
         const paymentData = {
           id: paymentId || `pf_${Date.now()}`,
@@ -56,12 +63,12 @@ export async function GET(request: NextRequest) {
           valid: true,
           payment: paymentData,
           environment: "sandbox",
-          note: "Sandbox payment verified - bypassing R 0.00 validation issue",
+          note: "Sandbox payment verified - bypassing PayFast R 0.00 validation issue",
         })
       }
     }
 
-    // Attempt PayFast validation for production or if sandbox validation is specifically requested
+    // For production payments or when sandbox validation is specifically requested
     const validateUrl = isProduction
       ? "https://www.payfast.co.za/eng/query/validate"
       : "https://sandbox.payfast.co.za/eng/query/validate"
@@ -116,10 +123,10 @@ export async function GET(request: NextRequest) {
       } else {
         console.log("❌ PayFast validation failed:", result)
 
-        // In sandbox, if validation fails but we have a valid reference, treat as success
-        // This is specifically for the R 0.00 payment issue
-        if (!isProduction && reference && reference.startsWith("INF")) {
-          console.log("🔄 Sandbox fallback: PayFast returned INVALID but reference is valid")
+        // If validation fails but we have a valid reference, and we're using sandbox merchant ID
+        // treat as success (this handles the R 0.00 payment issue)
+        if ((isSandbox || merchantId === "10000100") && reference && reference.startsWith("INF")) {
+          console.log("🔄 Sandbox override: PayFast returned INVALID but reference is valid")
 
           const paymentData = {
             id: paymentId || `pf_${Date.now()}`,
@@ -159,7 +166,7 @@ export async function GET(request: NextRequest) {
       console.error("❌ PayFast validation request failed:", fetchError)
 
       // Sandbox fallback for network/API errors
-      if (!isProduction && reference && reference.startsWith("INF")) {
+      if ((isSandbox || merchantId === "10000100") && reference && reference.startsWith("INF")) {
         console.log("🔄 Network error fallback: treating sandbox payment as successful")
 
         const paymentData = {
