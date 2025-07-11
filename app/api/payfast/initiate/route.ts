@@ -183,13 +183,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
 
-    // Force sandbox environment for testing
-    const isProduction = false // Set to true when ready for live payments
+    // Determine if it's production based on NODE_ENV
+    const isProduction = process.env.NODE_ENV === "production"
     const payfastUrl = isProduction
       ? "https://www.payfast.co.za/eng/process"
       : "https://sandbox.payfast.co.za/eng/process"
 
-    // Use sandbox credentials for testing
+    // Use production credentials if in production, otherwise use sandbox test credentials
     const finalMerchantId = isProduction ? merchantId : "10000100"
     const finalMerchantKey = isProduction ? merchantKey : "46f0cd694581a"
     const finalPassphrase = isProduction ? passphrase : "jt7NOE43FZPn"

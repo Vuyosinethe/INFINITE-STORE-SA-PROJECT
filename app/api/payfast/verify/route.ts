@@ -24,44 +24,46 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Missing PayFast configuration" }, { status: 500 })
     }
 
-    console.log("🔍 Merchant ID check:", merchantId)
+    // Determine if it's production based on NODE_ENV
+    const isProduction = process.env.NODE_ENV === "production"
 
-    // Force sandbox mode for testing - PayFast sandbox has known R 0.00 issues
-    // We'll treat any payment with a valid INF reference as successful in sandbox
-    const forceSandboxMode = false // Set this to false when going to production
+    console.log("🔍 Environment detection:", {
+      NODE_ENV: process.env.NODE_ENV,
+      isProduction,
+      merchantId: merchantId.substring(0, 8) + "...",
+    })
 
-    console.log("🧪 Force sandbox mode:", forceSandboxMode)
+    // If not in production, apply sandbox override for R 0.00 payment issue
+    if (!isProduction) {
+      console.log("🧪 Not in production environment - applying sandbox override")
+      if (reference && reference.startsWith("INF")) {
+        console.log("✅ Valid order reference detected in non-production environment:", reference)
 
-    // If we have a valid order reference, treat as successful (sandbox override)
-    if (reference && reference.startsWith("INF")) {
-      console.log("✅ Valid order reference detected:", reference)
-      console.log("🔄 Applying sandbox override for R 0.00 payment issue")
+        const paymentData = {
+          id: paymentId || `pf_${Date.now()}`,
+          reference: reference,
+          status: "completed",
+          amount: 1500.0, // Use actual cart amount
+          description: "Payment completed (sandbox override)",
+          created_at: new Date().toISOString(),
+          customer: {
+            name: "Test Customer",
+            email: "customer@test.com",
+          },
+        }
 
-      const paymentData = {
-        id: paymentId || `pf_${Date.now()}`,
-        reference: reference,
-        status: "completed",
-        amount: 1500.0, // Use actual cart amount
-        description: "Payment completed (sandbox override)",
-        created_at: new Date().toISOString(),
-        customer: {
-          name: "Test Customer",
-          email: "customer@test.com",
-        },
+        return NextResponse.json({
+          success: true,
+          valid: true,
+          payment: paymentData,
+          environment: "sandbox",
+          note: "Payment verified - bypassing PayFast R 0.00 validation issue for non-production env",
+          override_applied: true,
+        })
       }
-
-      return NextResponse.json({
-        success: true,
-        valid: true,
-        payment: paymentData,
-        environment: "sandbox",
-        note: "Payment verified - bypassing PayFast R 0.00 validation issue",
-        override_applied: true,
-      })
     }
 
-    // If no valid reference, attempt PayFast validation
-    const isProduction = process.env.NODE_ENV === "production" && !forceSandboxMode
+    // For production payments, or if no valid reference in non-production, attempt real PayFast validation
     const validateUrl = isProduction
       ? "https://www.payfast.co.za/eng/query/validate"
       : "https://sandbox.payfast.co.za/eng/query/validate"
@@ -97,7 +99,7 @@ export async function GET(request: NextRequest) {
           id: paymentId || `pf_${Date.now()}`,
           reference: reference || "N/A",
           status: "completed",
-          amount: 0,
+          amount: 0, // This would come from your database
           description: "Order payment",
           created_at: new Date().toISOString(),
           customer: {
@@ -110,14 +112,14 @@ export async function GET(request: NextRequest) {
           success: true,
           valid: true,
           payment: paymentData,
-          environment: forceSandboxMode ? "sandbox" : "production",
+          environment: isProduction ? "production" : "sandbox",
         })
       } else {
         console.log("❌ PayFast validation failed:", result)
 
-        // Apply sandbox override even if PayFast returns INVALID
-        if (reference && reference.startsWith("INF")) {
-          console.log("🔄 PayFast returned INVALID but applying sandbox override")
+        // If validation fails and not in production, and we have a valid reference, apply sandbox override
+        if (!isProduction && reference && reference.startsWith("INF")) {
+          console.log("🔄 PayFast returned INVALID but applying sandbox override for non-production env")
 
           const paymentData = {
             id: paymentId || `pf_${Date.now()}`,
@@ -137,18 +139,19 @@ export async function GET(request: NextRequest) {
             valid: true,
             payment: paymentData,
             environment: "sandbox",
-            note: "PayFast returned INVALID but overriding for R 0.00 issue",
+            note: "PayFast returned INVALID but overriding for R 0.00 issue in non-production env",
             payfast_response: result,
             override_applied: true,
           })
         }
 
+        // For production or invalid references, return the failure
         return NextResponse.json(
           {
             success: false,
             error: "Payment validation failed",
             details: result,
-            environment: forceSandboxMode ? "sandbox" : "production",
+            environment: isProduction ? "production" : "sandbox",
           },
           { status: 400 },
         )
@@ -156,9 +159,9 @@ export async function GET(request: NextRequest) {
     } catch (fetchError) {
       console.error("❌ PayFast validation request failed:", fetchError)
 
-      // Network error fallback - if we have a valid reference, treat as successful
-      if (reference && reference.startsWith("INF")) {
-        console.log("🔄 Network error fallback: treating payment as successful")
+      // Network error fallback - if not in production and we have a valid reference, treat as successful
+      if (!isProduction && reference && reference.startsWith("INF")) {
+        console.log("🔄 Network error fallback: treating payment as successful in non-production env")
 
         const paymentData = {
           id: paymentId || `pf_${Date.now()}`,
@@ -178,7 +181,7 @@ export async function GET(request: NextRequest) {
           valid: true,
           payment: paymentData,
           environment: "sandbox",
-          note: "Network error but valid reference - treating as successful",
+          note: "Network error but valid reference - treating as successful in non-production env",
           override_applied: true,
         })
       }
