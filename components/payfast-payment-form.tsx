@@ -222,3 +222,5 @@ export function PayFastPaymentForm() {
     </Card>
   )
 }
+
+export default PayFastPaymentForm
