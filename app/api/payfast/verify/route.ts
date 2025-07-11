@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
 
     // Force sandbox mode for testing - PayFast sandbox has known R 0.00 issues
     // We'll treat any payment with a valid INF reference as successful in sandbox
-    const forceSandboxMode = true // Set this to false when going to production
+    const forceSandboxMode = false // Set this to false when going to production
 
     console.log("🧪 Force sandbox mode:", forceSandboxMode)
 
