@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-
+import type React from "react" // Changed from 'import type React from "react"'
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,7 +10,7 @@ import { useCart } from "@/components/cart-provider"
 import { Loader2, CheckCircle, XCircle } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
 
-const PayFastPaymentForm = () => {
+export default function PayFastPaymentForm() {
   const { cartItems, getTotalPrice, clearCart } = useCart()
   const [customerName, setCustomerName] = useState("")
   const [customerEmail, setCustomerEmail] = useState("")
@@ -222,5 +221,3 @@ const PayFastPaymentForm = () => {
     </Card>
   )
 }
-
-export default PayFastPaymentForm
