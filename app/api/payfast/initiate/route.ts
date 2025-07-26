@@ -183,13 +183,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
 
-    // Force sandbox environment for testing
-    const isProduction = false // Set to true when ready for live payments
+    // FIXED: Determine environment based on NODE_ENV and availability of production credentials
+    const isProduction = nodeEnv === "production" && merchantId && merchantKey
     const payfastUrl = isProduction
       ? "https://www.payfast.co.za/eng/process"
       : "https://sandbox.payfast.co.za/eng/process"
 
-    // Use sandbox credentials for testing
+    // FIXED: Use production credentials when available, fallback to sandbox for testing
     const finalMerchantId = isProduction ? merchantId : "10000100"
     const finalMerchantKey = isProduction ? merchantKey : "46f0cd694581a"
     const finalPassphrase = isProduction ? passphrase : "jt7NOE43FZPn"
@@ -198,8 +198,27 @@ export async function POST(request: NextRequest) {
       isProduction,
       payfastUrl,
       merchantId: finalMerchantId,
-      usingTestCredentials: !isProduction,
+      usingProductionCredentials: isProduction,
+      nodeEnv,
+      hasProductionCredentials: !!(merchantId && merchantKey),
     })
+
+    // Validate production credentials if in production
+    if (isProduction) {
+      if (!merchantId || !merchantKey) {
+        console.error("Missing production PayFast credentials")
+        return NextResponse.json(
+          {
+            error: "Production PayFast credentials not configured",
+            details: "Please set PAYFAST_MERCHANT_ID and PAYFAST_MERCHANT_KEY environment variables",
+          },
+          { status: 500 },
+        )
+      }
+      console.log("✅ Using PRODUCTION PayFast credentials")
+    } else {
+      console.log("⚠️ Using SANDBOX PayFast credentials for testing")
+    }
 
     // Prepare PayFast payment data in the EXACT order required by PayFast
     const paymentData: Record<string, string | number> = {
@@ -243,7 +262,7 @@ export async function POST(request: NextRequest) {
 
     console.log("PayFast data after cleanup:", JSON.stringify(paymentData, null, 2))
 
-    // Generate signature using the sandbox passphrase with correct ordering
+    // Generate signature using the appropriate passphrase
     if (finalPassphrase && finalPassphrase.trim() !== "") {
       paymentData.signature = generateSignature(paymentData, finalPassphrase)
       console.log("Generated signature:", paymentData.signature)
@@ -278,7 +297,7 @@ export async function POST(request: NextRequest) {
     console.log("Reference:", body.reference)
     console.log("Amount:", body.amount)
     console.log("Customer:", body.customerEmail)
-    console.log("Environment:", isProduction ? "production" : "sandbox")
+    console.log("Environment:", isProduction ? "PRODUCTION" : "SANDBOX")
 
     // Return payment form data for frontend to submit
     const response = {
@@ -292,7 +311,8 @@ export async function POST(request: NextRequest) {
         merchantId: finalMerchantId.substring(0, 8) + "***",
         hasSignature: !!paymentData.signature,
         fieldCount: Object.keys(paymentData).length,
-        usingTestCredentials: !isProduction,
+        usingProductionCredentials: isProduction,
+        nodeEnv,
       },
     }
 

@@ -178,7 +178,7 @@ export function PayFastPaymentForm({
         console.log("Payment URL:", result.paymentUrl)
         console.log("Has signature:", !!result.paymentData.signature)
         console.log("Field count:", result.debug?.fieldCount)
-        console.log("Using test credentials:", result.debug?.usingTestCredentials)
+        console.log("Using production credentials:", result.debug?.usingProductionCredentials)
 
         setPaymentEnvironment(result.environment)
         setDebugInfo(`Payment initiated successfully. Redirecting to ${result.environment} environment...`)
@@ -296,19 +296,21 @@ export function PayFastPaymentForm({
       {/* Payment Environment Info */}
       {paymentEnvironment && (
         <Card
-          className={paymentEnvironment === "production" ? "border-red-200 bg-red-50" : "border-green-200 bg-green-50"}
+          className={
+            paymentEnvironment === "production" ? "border-green-200 bg-green-50" : "border-orange-200 bg-orange-50"
+          }
         >
           <CardContent className="pt-6">
             <div className="flex items-center gap-2">
               <CheckCircle
-                className={`h-5 w-5 ${paymentEnvironment === "production" ? "text-red-600" : "text-green-600"}`}
+                className={`h-5 w-5 ${paymentEnvironment === "production" ? "text-green-600" : "text-orange-600"}`}
               />
               <span
-                className={`font-medium ${paymentEnvironment === "production" ? "text-red-800" : "text-green-800"}`}
+                className={`font-medium ${paymentEnvironment === "production" ? "text-green-800" : "text-orange-800"}`}
               >
                 {paymentEnvironment === "production"
-                  ? "⚠️ LIVE Payment Environment - Real money will be charged!"
-                  : "✅ Sandbox Testing Environment - Safe for testing"}
+                  ? "🔒 LIVE Payment Environment - Real money will be charged!"
+                  : "⚠️ Sandbox Testing Environment - Safe for testing"}
               </span>
             </div>
           </CardContent>
@@ -463,11 +465,21 @@ export function PayFastPaymentForm({
                 <Shield className="h-5 w-5" />
                 Complete Payment
               </CardTitle>
-              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                Sandbox Mode
+              <Badge
+                variant="outline"
+                className={
+                  paymentEnvironment === "production"
+                    ? "bg-green-50 text-green-700 border-green-200"
+                    : "bg-orange-50 text-orange-700 border-orange-200"
+                }
+              >
+                {paymentEnvironment === "production" ? "Live Mode" : "Test Mode"}
               </Badge>
             </div>
-            <CardDescription>Secure payment processing powered by PayFast (Testing Mode)</CardDescription>
+            <CardDescription>
+              Secure payment processing powered by PayFast
+              {paymentEnvironment === "production" ? " (Live Environment)" : " (Testing Environment)"}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Payment Summary */}
@@ -502,24 +514,26 @@ export function PayFastPaymentForm({
               </div>
             </div>
 
-            {/* Test Environment Notice */}
-            <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium text-orange-800">Test Environment</p>
-                <p className="text-xs text-orange-700">
-                  This is a test payment using PayFast sandbox. Use test card numbers. No real charges will be made.
-                </p>
-                <div className="text-xs text-orange-600 mt-2">
-                  <p>
-                    <strong>Test Cards:</strong>
+            {/* Environment Notice */}
+            {paymentEnvironment !== "production" && (
+              <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg border border-orange-200">
+                <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                <div className="space-y-1">
+                  <p className="text-sm font-medium text-orange-800">Test Environment</p>
+                  <p className="text-xs text-orange-700">
+                    This is a test payment using PayFast sandbox. Use test card numbers. No real charges will be made.
                   </p>
-                  <p>• Success: 4000000000000002 (Visa)</p>
-                  <p>• Decline: 4000000000000010 (Insufficient funds)</p>
-                  <p>• CVV: Any 3 digits • Expiry: Any future date</p>
+                  <div className="text-xs text-orange-600 mt-2">
+                    <p>
+                      <strong>Test Cards:</strong>
+                    </p>
+                    <p>• Success: 4000000000000002 (Visa)</p>
+                    <p>• Decline: 4000000000000010 (Insufficient funds)</p>
+                    <p>• CVV: Any 3 digits • Expiry: Any future date</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Error Display */}
             {error && (
@@ -543,7 +557,7 @@ export function PayFastPaymentForm({
               ) : (
                 <>
                   <CreditCard className="mr-2 h-5 w-5" />
-                  Test Pay R{total.toFixed(2)} with PayFast
+                  {paymentEnvironment === "production" ? "Pay" : "Test Pay"} R{total.toFixed(2)} with PayFast
                 </>
               )}
             </Button>
@@ -557,8 +571,10 @@ export function PayFastPaymentForm({
             </div>
 
             <p className="text-xs text-center text-muted-foreground">
-              By clicking "Test Pay", you will be redirected to PayFast's sandbox environment to complete your test
-              transaction. Your cart will be cleared and order details saved for tracking.
+              By clicking "{paymentEnvironment === "production" ? "Pay" : "Test Pay"}", you will be redirected to
+              PayFast's {paymentEnvironment === "production" ? "secure payment" : "sandbox"} environment to complete
+              your {paymentEnvironment === "production" ? "" : "test "}transaction. Your cart will be cleared and order
+              details saved for tracking.
             </p>
           </CardContent>
         </Card>

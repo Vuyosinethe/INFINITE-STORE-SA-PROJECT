@@ -45,10 +45,13 @@ async function verifyPaymentWithPayFast(pfPaymentId: string): Promise<boolean> {
       return true
     }
 
+    // FIXED: Use correct environment based on NODE_ENV
     const isProduction = process.env.NODE_ENV === "production"
     const validateUrl = isProduction
       ? "https://www.payfast.co.za/eng/query/validate"
       : "https://sandbox.payfast.co.za/eng/query/validate"
+
+    console.log("PayFast validation environment:", { isProduction, validateUrl })
 
     const response = await fetch(validateUrl, {
       method: "POST",
@@ -78,6 +81,7 @@ async function processPaymentStatus(ipnData: PayFastIPN) {
     status,
     amount: ipnData.amount_gross,
     customer: ipnData.email_address,
+    environment: process.env.NODE_ENV === "production" ? "PRODUCTION" : "SANDBOX",
   })
 
   switch (status) {
@@ -122,6 +126,7 @@ export async function POST(request: NextRequest) {
   try {
     console.log("🔔 PayFast IPN received at:", new Date().toISOString())
     console.log("📍 Request URL:", request.url)
+    console.log("🌐 Environment:", process.env.NODE_ENV === "production" ? "PRODUCTION" : "SANDBOX")
     console.log("🌐 Request headers:", Object.fromEntries(request.headers.entries()))
 
     // Check content type
@@ -184,8 +189,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
+    // FIXED: Use correct passphrase based on environment
+    const isProduction = process.env.NODE_ENV === "production"
+    const passphrase = isProduction ? process.env.PAYFAST_PASSPHRASE : "jt7NOE43FZPn"
+
+    console.log("Using passphrase for environment:", {
+      isProduction,
+      hasPassphrase: !!passphrase,
+      passphraseLength: passphrase?.length || 0,
+    })
+
     // Verify signature if passphrase is configured
-    const passphrase = process.env.PAYFAST_PASSPHRASE
     if (passphrase && ipnData.signature) {
       const expectedSignature = generateSignature(ipnData, passphrase)
       if (expectedSignature !== ipnData.signature) {
@@ -218,6 +232,7 @@ export async function POST(request: NextRequest) {
       payment_id: ipnData.pf_payment_id,
       reference: ipnData.custom_str1,
       status: ipnData.payment_status,
+      environment: isProduction ? "production" : "sandbox",
     })
   } catch (error) {
     console.error("PayFast IPN processing error:", error)
@@ -233,8 +248,10 @@ export async function POST(request: NextRequest) {
 
 // Handle GET requests for IPN verification (if required by PayFast)
 export async function GET(request: NextRequest) {
+  const isProduction = process.env.NODE_ENV === "production"
   return NextResponse.json({
     message: "PayFast IPN endpoint is active",
+    environment: isProduction ? "production" : "sandbox",
     timestamp: new Date().toISOString(),
     url: request.url,
   })
