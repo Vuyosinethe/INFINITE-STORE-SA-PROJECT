@@ -50,7 +50,7 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
           {product.isNewRelease && (
             <Badge className="absolute top-1 right-1 bg-primary text-black text-xs px-1 py-0.5">
-              {product.category === "football-tees" ? "New 24/25" : "New"}
+              {product.category === "football-tees" ? "New Season" : "New"}
             </Badge>
           )}
           {product.backImage && (
@@ -66,7 +66,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <CardContent className="p-2">
           <h3 className="font-semibold mb-1 line-clamp-2 text-sm">{product.name}</h3>
           <div className="flex items-center gap-1 mb-1">
-            <span className="font-bold text-lg text-primary">R1500</span>
+            <span className="font-bold text-lg text-primary">R{product.price}</span>
           </div>
           <Badge variant="outline" className="text-xs border-primary text-primary mb-1">
             {product.category === "football-tees" ? "24/25 Season" : "Premium Quality"}
