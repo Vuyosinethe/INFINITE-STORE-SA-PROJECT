@@ -1,4 +1,4 @@
-import PayFastPaymentForm from "@/components/payfast-payment-form"
+import { PayFastPaymentForm } from "@/components/payfast-payment-form"
 
 export default function CheckoutPage() {
   return (
