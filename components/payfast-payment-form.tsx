@@ -11,7 +11,7 @@ import { useCart } from "@/components/cart-provider"
 import { Loader2, CheckCircle, XCircle } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
 
-export default function PayFastPaymentForm() {
+const PayFastPaymentForm = () => {
   const { cartItems, getTotalPrice, clearCart } = useCart()
   const [customerName, setCustomerName] = useState("")
   const [customerEmail, setCustomerEmail] = useState("")
@@ -50,7 +50,7 @@ export default function PayFastPaymentForm() {
       amount: totalPrice,
       description: `Order from iNfinite store.SA`,
       customerName,
-      customerEmail, // Corrected: Removed duplicate customerEmail
+      customerEmail,
       customerPhone,
       reference: paymentReference,
       items: cartItems.map((item) => ({
@@ -222,3 +222,5 @@ export default function PayFastPaymentForm() {
     </Card>
   )
 }
+
+export default PayFastPaymentForm
