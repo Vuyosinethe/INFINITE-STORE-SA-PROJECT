@@ -1,6 +1,6 @@
 import { products } from "@/lib/products"
 import { ProductGrid } from "@/components/product-grid"
-import { Badge } from "@/components/ui/badge" // Ensure Badge is imported
+import { Badge } from "@/components/ui/badge"
 
 export default function FootballTeesPage() {
   const footballTees = products.filter((product) => product.category === "football-tees")
