@@ -28,7 +28,7 @@ const newSeasonJerseys: Product[] = [
     price: 1600,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/jerseys/arsenal-2526-home-main.jpeg",
+    image: "/images/jerseys/arsenal-2526-home-main.png",
     backImage: "/images/jerseys/arsenal-2526-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
