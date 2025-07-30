@@ -28,7 +28,7 @@ const newSeasonJerseys: Product[] = [
     price: 1600,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/jerseys/arsenal-2526-home-main.png", // Corrected extension to .jpeg
+    image: "/images/jerseys/arsenal-2526-home-main.png", // Corrected to .jpeg
     backImage: "/images/jerseys/arsenal-2526-home-back.png",
     isFeatured: true,
     isHotDeal: true,
@@ -558,8 +558,8 @@ const otherProducts: Product[] = [
     price: 1500,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/jerseys/bayern-munich-2425-third-front.png",
-    backImage: "/images/jerseys/bayern-munich-2425-third-back.png",
+    image: "/images/jerseys/bayern-munich-2425-third-front.png", // This one is actually PNG
+    backImage: "/images/jerseys/bayern-munich-2425-third-back.png", // This one is actually PNG
     isFeatured: true,
     isHotDeal: false,
     isNewRelease: false,
