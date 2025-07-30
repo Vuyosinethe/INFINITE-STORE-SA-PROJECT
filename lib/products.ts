@@ -1192,46 +1192,6 @@ const otherProducts: Product[] = [
     isNewRelease: false,
   },
   {
-    id: 69,
-    name: "Adidas Gazelle Bold",
-    price: 1500,
-    category: "sneakers",
-    sizes: ["UK 3", "UK 4", "UK 5", "UK 6", "UK 7", "UK 8", "UK 9"],
-    image: "/images/sneakers/adidas-gazelle-bold-cream-green-side.jpeg",
-    colorVariants: [
-      {
-        color: "#F5F5DC",
-        colorName: "Cream Collegiate/Green",
-        image: "/images/sneakers/adidas-gazelle-bold-cream-green-side.jpeg",
-        additionalImages: [
-          "/images/sneakers/adidas-gazelle-bold-cream-green-pair.jpeg",
-          "/images/sneakers/adidas-gazelle-bold-cream-green-top.jpeg",
-        ],
-      },
-      {
-        color: "#2F4F4F",
-        colorName: "Mineral Green/Putty Grey",
-        image: "/images/sneakers/adidas-gazelle-bold-mineral-green-side.jpeg",
-        additionalImages: [
-          "/images/sneakers/adidas-gazelle-bold-mineral-green-top.jpeg",
-          "/images/sneakers/adidas-gazelle-bold-mineral-green-platform.jpeg",
-        ],
-      },
-      {
-        color: "#C0C0C0",
-        colorName: "Mineral Grey/White",
-        image: "/images/sneakers/adidas-gazelle-bold-mineral-grey-white-side.jpeg",
-        additionalImages: [
-          "/images/sneakers/adidas-gazelle-bold-mineral-grey-white-top.jpeg",
-          "/images/sneakers/adidas-gazelle-bold-mineral-grey-white-outsole.jpeg",
-        ],
-      },
-    ],
-    isFeatured: true,
-    isHotDeal: true,
-    isNewRelease: false,
-  },
-  {
     id: 70,
     name: "Adidas Campus 00s",
     price: 1500,
