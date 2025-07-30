@@ -20,9 +20,7 @@ export interface Product {
   isNewRelease: boolean
 }
 
-// Move the 25/26 season jerseys to the beginning of the `products` array.
-
-const productsList: Product[] = [
+const newSeasonJerseys: Product[] = [
   // NEW 25/26 ARSENAL HOME JERSEY
   {
     id: 114,
@@ -210,6 +208,9 @@ const productsList: Product[] = [
     isHotDeal: true,
     isNewRelease: true,
   },
+]
+
+const otherProducts: Product[] = [
   // Socks - Updated with real products
   {
     id: 8,
@@ -220,7 +221,7 @@ const productsList: Product[] = [
     image: "/images/socks/jordan-white-red-crew.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 9,
@@ -231,7 +232,7 @@ const productsList: Product[] = [
     image: "/images/socks/nike-black-white-crew.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: false,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 10,
@@ -242,7 +243,7 @@ const productsList: Product[] = [
     image: "/images/socks/nike-white-black-crew.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 104,
@@ -253,7 +254,7 @@ const productsList: Product[] = [
     image: "/images/socks/nike-grey-black-crew.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 105,
@@ -264,7 +265,7 @@ const productsList: Product[] = [
     image: "/images/socks/adidas-white-black-crew.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 106,
@@ -275,7 +276,7 @@ const productsList: Product[] = [
     image: "/images/socks/adidas-black-white-crew.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 107,
@@ -286,7 +287,7 @@ const productsList: Product[] = [
     image: "/images/socks/vans-white-black-crew.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: false,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 108,
@@ -297,7 +298,7 @@ const productsList: Product[] = [
     image: "/images/socks/vans-black-white-crew.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 109,
@@ -308,7 +309,7 @@ const productsList: Product[] = [
     image: "/images/socks/puma-black-white-crew.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 110,
@@ -319,10 +320,10 @@ const productsList: Product[] = [
     image: "/images/socks/puma-white-black-crew-jordan.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
 
-  // Football Tees - COMPLETE COLLECTION + ALL NEW 25/26 JERSEYS
+  // Football Tees - COMPLETE COLLECTION (24/25 season and older)
   {
     id: 11,
     name: "Arsenal 24/25 Home Jersey",
@@ -333,7 +334,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/arsenal-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 12,
@@ -345,7 +346,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/arsenal-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 13,
@@ -357,7 +358,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/ac-milan-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 14,
@@ -369,7 +370,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/ac-milan-2425-away-back.jpeg",
     isFeatured: false,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 15,
@@ -381,7 +382,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/aston-villa-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 16,
@@ -393,7 +394,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/atletico-madrid-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 17,
@@ -405,7 +406,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/atletico-madrid-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 18,
@@ -417,7 +418,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/bvb-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 19,
@@ -429,7 +430,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/bvb-2425-away-back.jpeg",
     isFeatured: false,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 20,
@@ -441,7 +442,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/chelsea-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 21,
@@ -453,7 +454,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/barcelona-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 22,
@@ -465,7 +466,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/barcelona-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 23,
@@ -477,7 +478,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/barcelona-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 24,
@@ -489,7 +490,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/chelsea-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 25,
@@ -501,7 +502,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/chelsea-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 26,
@@ -513,7 +514,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/inter-milan-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 27,
@@ -525,7 +526,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/inter-milan-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 28,
@@ -537,7 +538,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/bayern-munich-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 29,
@@ -549,7 +550,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/bayern-munich-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 30,
@@ -561,7 +562,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/bayern-munich-2425-third-back.png",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 31,
@@ -573,7 +574,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/inter-milan-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 32,
@@ -585,7 +586,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/juventus-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 33,
@@ -597,7 +598,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/juventus-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 34,
@@ -609,7 +610,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/kaizer-chiefs-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 35,
@@ -621,7 +622,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/kaizer-chiefs-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 36,
@@ -633,7 +634,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/liverpool-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 37,
@@ -645,7 +646,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/liverpool-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 38,
@@ -657,7 +658,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/liverpool-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 39,
@@ -669,7 +670,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/manchester-city-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 40,
@@ -681,7 +682,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/manchester-city-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 41,
@@ -693,7 +694,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/manchester-city-2425-fourth-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 42,
@@ -705,7 +706,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/manchester-united-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 43,
@@ -717,7 +718,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/manchester-united-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 44,
@@ -729,7 +730,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/manchester-united-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 45,
@@ -741,7 +742,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/newcastle-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 46,
@@ -753,7 +754,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/newcastle-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 47,
@@ -764,7 +765,7 @@ const productsList: Product[] = [
     image: "/images/jerseys/marseille-2425-home-front.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 48,
@@ -776,7 +777,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/marseille-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 49,
@@ -788,7 +789,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/orlando-pirates-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 50,
@@ -800,7 +801,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/orlando-pirates-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 51,
@@ -812,7 +813,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/psg-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 52,
@@ -824,7 +825,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/psg-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 53,
@@ -836,7 +837,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/psg-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 54,
@@ -848,7 +849,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/real-madrid-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 55,
@@ -860,7 +861,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/real-madrid-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 56,
@@ -872,7 +873,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/real-madrid-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 57,
@@ -884,7 +885,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/rb-leipzig-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 58,
@@ -896,7 +897,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/napoli-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 59,
@@ -908,7 +909,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/napoli-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 60,
@@ -920,7 +921,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/tottenham-2425-home-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 61,
@@ -932,7 +933,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/tottenham-2425-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 62,
@@ -944,7 +945,7 @@ const productsList: Product[] = [
     backImage: "/images/jerseys/tottenham-2425-third-back.jpeg",
     isFeatured: true,
     isHotDeal: false,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
 
   // SNEAKERS - Only those with real product images
@@ -1002,7 +1003,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 64,
@@ -1042,7 +1043,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 65,
@@ -1082,7 +1083,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 66,
@@ -1114,7 +1115,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 67,
@@ -1133,7 +1134,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 68,
@@ -1188,7 +1189,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 69,
@@ -1228,7 +1229,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 70,
@@ -1247,7 +1248,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 71,
@@ -1290,7 +1291,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 72,
@@ -1339,7 +1340,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 73,
@@ -1358,7 +1359,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 74,
@@ -1380,7 +1381,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 75,
@@ -1399,7 +1400,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 76,
@@ -1421,7 +1422,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 78,
@@ -1443,7 +1444,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 79,
@@ -1492,7 +1493,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 80,
@@ -1511,7 +1512,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 81,
@@ -1542,7 +1543,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 82,
@@ -1567,7 +1568,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 83,
@@ -1586,7 +1587,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 84,
@@ -1653,7 +1654,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 85,
@@ -1675,7 +1676,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 87,
@@ -1694,7 +1695,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 88,
@@ -1713,7 +1714,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 89,
@@ -1735,7 +1736,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 90,
@@ -1757,7 +1758,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 91,
@@ -1779,7 +1780,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 92,
@@ -1801,7 +1802,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 93,
@@ -1820,7 +1821,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 94,
@@ -1848,7 +1849,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 95,
@@ -1873,7 +1874,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 96,
@@ -1904,7 +1905,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 101,
@@ -1971,7 +1972,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 102,
@@ -1990,7 +1991,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 103,
@@ -2009,7 +2010,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 112,
@@ -2031,7 +2032,7 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
   {
     id: 113,
@@ -2053,8 +2054,8 @@ const productsList: Product[] = [
     ],
     isFeatured: true,
     isHotDeal: true,
-    isNewRelease: true,
+    isNewRelease: false, // Changed to false
   },
 ]
 
-export const products: Product[] = productsList
+export const products: Product[] = [...newSeasonJerseys, ...otherProducts]
