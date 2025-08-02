@@ -12,9 +12,9 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 ## Deployment
 
-Your project is live at:
+The project is live at:
 
-**[https://vercel.com/2355730-witsaczas-projects/v0-infinite-store-design](https://vercel.com/2355730-witsaczas-projects/v0-infinite-store-design)**
+**[https://vercel.com/2355730-witsaczas-projects/v0-infinite-store-design](https://infinitestore.co.za)**
 
 ## Build your app
 
