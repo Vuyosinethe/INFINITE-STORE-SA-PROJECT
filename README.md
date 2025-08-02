@@ -14,17 +14,4 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 The project is live at:
 
-**[https://vercel.com/2355730-witsaczas-projects/v0-infinite-store-design](https://infinitestore.co.za)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/eMFqjR6Pv8I](https://v0.dev/chat/projects/eMFqjR6Pv8I)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+**[https://vercel.com/2355730-witsaczas-projects/v0-infinite-store-design](https://infinitestoresa.co.za)**
