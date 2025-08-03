@@ -23,7 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="relative aspect-[5/4] overflow-hidden bg-gray-50" onClick={() => setShowProductDetail(true)}>
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src={product.image || "/placeholder.svg"}
+              src={product.image || "/placeholder.png"}
               alt={product.name}
               fill
               className="object-contain group-hover:scale-105 transition-transform duration-300"
