@@ -67,7 +67,7 @@ const newSeasonJerseys: Product[] = [
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/chelsea-2526-away-front.jpeg",
-    backImage: "/images/jerseys/chelsea-2526-away-back.jpeg",
+    backImage: "/images/jerseys/chelena-2526-away-back.jpeg",
     isFeatured: true,
     isHotDeal: true,
     isNewRelease: true,
@@ -124,7 +124,6 @@ const newSeasonJerseys: Product[] = [
     isHotDeal: true,
     isNewRelease: true,
   },
-  // NEW 25/26 MANCHESTER UNITED HOME JERSEY
   {
     id: 122,
     name: "Manchester United 25/26 Home Jersey",
@@ -1000,6 +999,28 @@ const otherProducts: Product[] = [
         image: "/images/sneakers/nike-air-max-plus-drift-black-white-pair.jpeg",
         additionalImages: [],
       },
+      {
+        color: "#808080",
+        colorName: "Grey/Orange/Red Gradient",
+        image: "/images/sneakers/nike-air-max-plus-drift-grey-orange-red-side.jpeg",
+        additionalImages: [
+          "/images/sneakers/nike-air-max-plus-drift-grey-orange-red-top.jpeg",
+        ],
+      },
+      {
+        color: "#ADD8E6",
+        colorName: "Light Blue/Orange/Navy",
+        image: "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-pair.jpeg",
+        additionalImages: [
+          "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-back.jpeg",
+        ],
+      },
+      {
+        color: "#000000",
+        colorName: "Triple Black",
+        image: "/images/sneakers/nike-air-max-plus-drift-triple-black-pair.jpeg",
+        additionalImages: [],
+      },
     ],
     isFeatured: true,
     isHotDeal: true,
@@ -1029,6 +1050,9 @@ const otherProducts: Product[] = [
         additionalImages: [
           "/images/sneakers/nike-shox-tl-white-side.jpeg",
           "/images/sneakers/nike-shox-tl-white-top.jpeg",
+          "/images/sneakers/nike-shox-tl-white-silver-side.jpeg",
+          "/images/sneakers/nike-shox-tl-white-silver-pair.jpeg",
+          "/images/sneakers/nike-shox-tl-white-silver-top.jpeg",
         ],
       },
       {
@@ -1417,6 +1441,9 @@ const otherProducts: Product[] = [
         additionalImages: [
           "/images/sneakers/nike-dunk-low-white-rose-whisper-top.jpeg",
           "/images/sneakers/nike-dunk-low-white-rose-whisper-pair.jpeg",
+          "/images/sneakers/nike-dunk-low-white-rose-whisper-side-alt.jpeg",
+          "/images/sneakers/nike-dunk-low-white-rose-whisper-pair-alt.png",
+          "/images/sneakers/nike-dunk-low-white-rose-whisper-top-alt.png",
         ],
       },
     ],
@@ -1733,6 +1760,18 @@ const otherProducts: Product[] = [
           "/images/sneakers/nike-air-max-plus-tn-se-black-solar-red-pair.jpeg",
         ],
       },
+      {
+        color: "#FFA500",
+        colorName: "Orange/Yellow Gradient",
+        image: "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-side.jpeg",
+        additionalImages: [
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-top.jpeg",
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-pair.jpeg",
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-side-alt.jpeg",
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-top-alt.jpeg",
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-pair-alt.png",
+        ],
+      },
     ],
     isFeatured: true,
     isHotDeal: true,
@@ -1838,6 +1877,7 @@ const otherProducts: Product[] = [
         additionalImages: [
           "/images/sneakers/nike-air-max-plus-white-top.jpeg",
           "/images/sneakers/nike-air-max-plus-white-profile.jpeg",
+          "/images/sneakers/nike-air-max-plus-triple-white-side.jpeg",
         ],
       },
       {
@@ -1888,13 +1928,19 @@ const otherProducts: Product[] = [
         color: "#FFFFFF",
         colorName: "White/Black",
         image: "/images/sneakers/nike-air-uptempo-white-side.jpeg",
-        additionalImages: ["/images/sneakers/nike-air-uptempo-white-pair.jpeg"],
+        additionalImages: [
+          "/images/sneakers/nike-air-uptempo-white-pair.jpeg",
+          "/images/sneakers/nike-air-uptempo-white-side.jpeg",
+        ],
       },
       {
         color: "#D2B48C",
         colorName: "Tan/Blue Accents",
         image: "/images/sneakers/nike-air-uptempo-tan-blue-pair.jpeg",
-        additionalImages: ["/images/sneakers/nike-air-uptempo-tan-blue-side.jpeg"],
+        additionalImages: [
+          "/images/sneakers/nike-air-uptempo-tan-blue-side.jpeg",
+          "/images/sneakers/nike-air-uptempo-tan-blue-pair.jpeg",
+        ],
       },
       {
         color: "#000000",
@@ -2005,7 +2051,10 @@ const otherProducts: Product[] = [
         color: "#1e3a8a",
         colorName: "Navy/White Shashiko",
         image: "/images/sneakers/nike-dunk-low-shashiko-navy-white-pair.jpeg",
-        additionalImages: [],
+        additionalImages: [
+          "/images/sneakers/nike-dunk-low-shashiko-navy-white-pair.jpeg",
+          "/images/sneakers/nike-dunk-low-shashiko-navy-white-pair-alt.png",
+        ],
       },
     ],
     isFeatured: true,
