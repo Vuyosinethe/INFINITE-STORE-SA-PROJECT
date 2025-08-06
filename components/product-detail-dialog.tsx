@@ -74,8 +74,8 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                                     transform: "scale(0.9)",
                                   }
                                 : {
-                                    objectPosition: "center bottom",
-                                    transform: "translateY(-25%) scale(1.1)",
+                                    objectPosition: "center center",
+                                    transform: "scale(1)", // Adjust scale as needed, but remove translateY
                                   }
                           }
                         />
@@ -103,8 +103,8 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                                       transform: "scale(0.9)",
                                     }
                                   : {
-                                      objectPosition: "center bottom",
-                                      transform: "translateY(-25%) scale(1.1)",
+                                      objectPosition: "center center",
+                                      transform: "scale(1)", // Adjust scale as needed, but remove translateY
                                     }
                             }
                           />
@@ -133,8 +133,8 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                                       transform: "scale(0.9)",
                                     }
                                   : {
-                                      objectPosition: "center bottom",
-                                      transform: "translateY(-25%) scale(1.1)",
+                                      objectPosition: "center center",
+                                      transform: "scale(1)", // Adjust scale as needed, but remove translateY
                                     }
                             }
                           />
@@ -163,8 +163,8 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                                 transform: "scale(0.9)",
                               }
                             : {
-                                objectPosition: "center bottom",
-                                transform: "translateY(-25%) scale(1.1)",
+                                objectPosition: "center center",
+                                transform: "scale(1)", // Adjust scale as needed, but remove translateY
                               }
                       }
                     />

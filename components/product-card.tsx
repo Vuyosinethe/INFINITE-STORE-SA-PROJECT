@@ -38,10 +38,15 @@ export function ProductCard({ product }: ProductCardProps) {
                         objectPosition: "center center",
                         transform: "scale(0.9)",
                       }
-                    : {
-                        objectPosition: "center bottom",
-                        transform: "translateY(-25%) scale(1.1)",
-                      }
+                    : product.category === "sneakers"
+                      ? {
+                          objectPosition: "center center",
+                          transform: "scale(1)",
+                        }
+                      : {
+                          objectPosition: "center bottom",
+                          transform: "translateY(-25%) scale(1.1)",
+                        }
               }
             />
           </div>
