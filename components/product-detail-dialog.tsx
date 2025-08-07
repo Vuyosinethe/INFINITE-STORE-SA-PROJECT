@@ -1,15 +1,13 @@
-'use client'
+"use client"
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { MinusIcon, PlusIcon, XIcon } from 'lucide-react'
-import { Product, ColorVariant } from '@/lib/products'
-import { useCart } from '@/components/cart-provider'
-import { useToast } from '@/components/ui/use-toast'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { cn } from '@/lib/utils'
+import { useState } from "react"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { AddToCartDialog } from "@/components/add-to-cart-dialog"
+import type { Product, ColorVariant } from "@/lib/products"
 
 interface ProductDetailDialogProps {
   product: Product
@@ -18,209 +16,248 @@ interface ProductDetailDialogProps {
 }
 
 export function ProductDetailDialog({ product, open, onOpenChange }: ProductDetailDialogProps) {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null)
-  const [selectedColor, setSelectedColor] = useState<ColorVariant | null>(null)
-  const [quantity, setQuantity] = useState(1)
-  const [mainImage, setMainImage] = useState(product.image)
-  const { addItem } = useCart()
-  const { toast } = useToast()
+  const [showAddToCart, setShowAddToCart] = useState(false)
+  const [selectedColor, setSelectedColor] = useState<ColorVariant | null>(
+    product.colorVariants ? product.colorVariants[0] : null,
+  )
 
-  useEffect(() => {
-    if (product) {
-      setSelectedSize(product.sizes[0])
-      setQuantity(1)
-      setMainImage(product.image)
-      if (product.colorVariants && product.colorVariants.length > 0) {
-        setSelectedColor(product.colorVariants[0])
-      } else {
-        setSelectedColor(null)
-      }
-    }
-  }, [product])
+  const currentImage = selectedColor?.image || product.image
+  const currentBackImage = product.backImage
+  const additionalImages = selectedColor?.additionalImages || []
 
-  useEffect(() => {
-    if (selectedColor) {
-      setMainImage(selectedColor.image)
-    } else if (product) {
-      setMainImage(product.image)
-    }
-  }, [selectedColor, product])
-
-  const handleAddToCart = () => {
-    if (!selectedSize) {
-      toast({
-        title: 'Please select a size.',
-        variant: 'destructive',
-      })
-      return
-    }
-
-    const itemToAdd = {
-      ...product,
-      selectedSize,
-      selectedColor: selectedColor ? selectedColor.colorName : undefined,
-      quantity,
-      image: selectedColor ? selectedColor.image : product.image,
-    }
-    addItem(itemToAdd)
-    toast({
-      title: `${quantity} x ${product.name} (${selectedSize}) added to cart!`,
-      description: 'You can view your cart by clicking the cart icon in the top right.',
-    })
-    onOpenChange(false)
-  }
-
-  const handleImageClick = (imagePath: string) => {
-    setMainImage(imagePath)
-  }
-
-  const currentImages = selectedColor?.additionalImages || []
-  if (selectedColor) {
-    currentImages.unshift(selectedColor.image)
-  } else {
-    if (product.image) currentImages.unshift(product.image)
-    if (product.backImage) currentImages.push(product.backImage)
-  }
+  const hasMultipleViews = currentBackImage || additionalImages.length > 0
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl p-0 sm:p-6">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-2 right-2 rounded-full"
-          onClick={() => onOpenChange(false)}
-        >
-          <XIcon className="h-5 w-5" />
-          <span className="sr-only">Close</span>
-        </Button>
-        <div className="grid md:grid-cols-2 gap-6 p-4 md:p-0">
-          <div className="flex flex-col items-center">
-            <div className="relative w-full max-w-md aspect-[4/3] mb-4">
-              <Image
-                src={mainImage || "/placeholder.svg"}
-                alt={product.name}
-                fill
-                style={{ objectFit: 'contain' }}
-                className="rounded-lg"
-              />
-            </div>
-            <div className="grid grid-cols-4 gap-2 w-full max-w-md">
-              {currentImages.map((img, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    'relative w-full aspect-square cursor-pointer rounded-lg overflow-hidden border-2',
-                    mainImage === img ? 'border-primary' : 'border-transparent'
+    <>
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">{product.name}</DialogTitle>
+            <DialogDescription>
+              {product.category === "football-tees"
+                ? "24/25 Season - Premium Quality Jersey"
+                : "Premium Quality Sneaker"}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Image Section */}
+            <div className="space-y-4">
+              {hasMultipleViews ? (
+                <Tabs defaultValue="main" className="w-full">
+                  <TabsList className="flex flex-wrap justify-center gap-2 w-full">
+                    <TabsTrigger value="main">Main View</TabsTrigger>
+                    {currentBackImage && <TabsTrigger value="back">Back View</TabsTrigger>}
+                    {additionalImages.map((_, index) => (
+                      <TabsTrigger key={index} value={`additional-${index}`}>
+                        View {index + 2}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                  <TabsContent value="main" className="mt-4">
+                    <div className="relative aspect-square overflow-hidden rounded-lg border bg-gray-50">
+                      <div className="absolute inset-0 overflow-hidden">
+                        <Image
+                          src={currentImage || "/placeholder.svg"}
+                          alt={`${product.name} - Main`}
+                          fill
+                          className="object-contain"
+                          style={
+                            product.category === "football-tees"
+                              ? {
+                                  objectPosition: "center center",
+                                  transform: "scale(0.9)",
+                                }
+                              : {
+                                  objectPosition: "center center",
+                                  transform: "scale(1)",
+                                }
+                          }
+                          unoptimized={product.category === "sneakers" || product.category === "socks"}
+                        />
+                      </div>
+                    </div>
+                  </TabsContent>
+                  {currentBackImage && (
+                    <TabsContent value="back" className="mt-4">
+                      <div className="relative aspect-square overflow-hidden rounded-lg border bg-gray-50">
+                        <div className="absolute inset-0 overflow-hidden">
+                          <Image
+                            src={currentBackImage || "/placeholder.svg"}
+                            alt={`${product.name} - Back`}
+                            fill
+                            className="object-contain"
+                            style={
+                              product.category === "football-tees"
+                                ? {
+                                    objectPosition: "center center",
+                                    transform: "scale(0.9)",
+                                  }
+                                : {
+                                    objectPosition: "center center",
+                                    transform: "scale(1)",
+                                  }
+                            }
+                            unoptimized={product.category === "sneakers" || product.category === "socks"}
+                          />
+                        </div>
+                      </div>
+                    </TabsContent>
                   )}
-                  onClick={() => handleImageClick(img)}
-                >
-                  <Image
-                    src={img || "/placeholder.svg"}
-                    alt={`${product.name} thumbnail ${index + 1}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
+                  {additionalImages.map((image, index) => (
+                    <TabsContent key={index} value={`additional-${index}`} className="mt-4">
+                      <div className="relative aspect-square overflow-hidden rounded-lg border bg-gray-50">
+                        <div className="absolute inset-0 overflow-hidden">
+                          <Image
+                            src={image || "/placeholder.svg"}
+                            alt={`${product.name} - View ${index + 2}`}
+                            fill
+                            className="object-contain"
+                            style={
+                              product.category === "football-tees"
+                                ? {
+                                    objectPosition: "center center",
+                                    transform: "scale(0.9)",
+                                  }
+                                : {
+                                    objectPosition: "center center",
+                                    transform: "scale(1)",
+                                  }
+                            }
+                            unoptimized={product.category === "sneakers" || product.category === "socks"}
+                          />
+                        </div>
+                      </div>
+                    </TabsContent>
+                  ))}
+                </Tabs>
+              ) : (
+                <div className="relative aspect-square overflow-hidden rounded-lg border bg-gray-50">
+                  <div className="absolute inset-0 overflow-hidden">
+                    <Image
+                      src={currentImage || "/placeholder.svg"}
+                      alt={product.name}
+                      fill
+                      className="object-contain"
+                      style={
+                        product.category === "football-tees"
+                          ? {
+                              objectPosition: "center center",
+                              transform: "scale(0.9)",
+                            }
+                          : {
+                              objectPosition: "center center",
+                              transform: "scale(1)",
+                            }
+                      }
+                      unoptimized={product.category === "sneakers" || product.category === "socks"}
+                    />
+                  </div>
                 </div>
-              ))}
+              )}
             </div>
-          </div>
-          <div className="flex flex-col gap-4 p-4">
-            <h2 className="text-3xl font-bold">{product.name}</h2>
-            <p className="text-2xl font-semibold">R{product.price}</p>
-            <Tabs defaultValue="description" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 h-auto">
-                <TabsTrigger value="description">Description</TabsTrigger>
-                <TabsTrigger value="details">Details</TabsTrigger>
-                <TabsTrigger value="delivery">Delivery</TabsTrigger>
-              </TabsList>
-              <TabsContent value="description" className="pt-4 text-gray-600">
-                <p>
-                  Experience unparalleled comfort and style with the {product.name}. Crafted with
-                  premium materials and designed for optimal performance, this product is perfect
-                  for both casual wear and athletic activities.
-                </p>
-              </TabsContent>
-              <TabsContent value="details" className="pt-4 text-gray-600">
-                <ul className="list-disc pl-5">
-                  <li>Material: High-quality breathable fabric</li>
-                  <li>Sole: Durable rubber for excellent grip</li>
-                  <li>Cushioning: Advanced air sole technology for superior comfort</li>
-                  <li>Fit: True to size, available in various sizes</li>
-                </ul>
-              </TabsContent>
-              <TabsContent value="delivery" className="pt-4 text-gray-600">
-                <p>
-                  Enjoy fast and reliable delivery straight to your doorstep. Orders are typically
-                  processed within 1-2 business days and delivered within 3-7 business days
-                  depending on your location.
-                </p>
-              </TabsContent>
-            </Tabs>
-            {product.colorVariants && product.colorVariants.length > 0 && (
+
+            {/* Product Info Section */}
+            <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Colors</h3>
-                <div className="flex gap-2">
-                  {product.colorVariants.map((variant) => (
-                    <Button
-                      key={variant.color}
-                      variant="outline"
-                      className={cn(
-                        'w-8 h-8 rounded-full p-0 border-2',
-                        selectedColor?.color === variant.color ? 'border-primary' : 'border-gray-300'
-                      )}
-                      style={{ backgroundColor: variant.color }}
-                      onClick={() => setSelectedColor(variant)}
-                      aria-label={`Select color ${variant.colorName}`}
-                    >
-                      <span className="sr-only">{variant.colorName}</span>
-                    </Button>
+                <div className="flex items-center gap-2 mb-4">
+                  {product.isNewRelease && (
+                    <Badge className="bg-primary text-black">
+                      {product.category === "football-tees" ? "New 24/25" : "New Release"}
+                    </Badge>
+                  )}
+                  {product.isHotDeal && <Badge className="bg-black text-white">Hot Deal</Badge>}
+                  {product.isFeatured && (
+                    <Badge variant="outline" className="border-primary text-primary">
+                      Featured
+                    </Badge>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <span className="text-3xl font-bold text-primary">R1500</span>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {product.category === "football-tees" ? "Premium authentic jersey" : "Premium quality sneaker"}
+                  </p>
+                </div>
+              </div>
+
+              {/* Color Selection */}
+              {product.colorVariants && product.colorVariants.length > 1 && (
+                <div>
+                  <h3 className="font-semibold mb-3">Available Colors</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {product.colorVariants.map((variant, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedColor(variant)}
+                        className={`flex items-center gap-2 p-2 rounded-lg border transition-all ${
+                          selectedColor === variant
+                            ? "border-primary bg-primary/10"
+                            : "border-gray-200 hover:border-gray-300"
+                        }`}
+                      >
+                        <div
+                          className="w-6 h-6 rounded-full border-2 border-gray-300"
+                          style={{ backgroundColor: variant.color }}
+                        />
+                        <span className="text-sm font-medium">{variant.colorName}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <h3 className="font-semibold mb-2">Available Sizes</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size) => (
+                    <Badge key={size} variant="outline" className="px-3 py-1">
+                      {size}
+                    </Badge>
                   ))}
                 </div>
               </div>
-            )}
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Size</h3>
-              <div className="flex flex-wrap gap-2">
-                {product.sizes.map((size) => (
-                  <Button
-                    key={size}
-                    variant={selectedSize === size ? 'default' : 'outline'}
-                    onClick={() => setSelectedSize(size)}
-                  >
-                    {size}
-                  </Button>
-                ))}
+
+              <div>
+                <h3 className="font-semibold mb-2">Product Features</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  {product.category === "football-tees" ? (
+                    <>
+                      <li>• Official 24/25 season design</li>
+                      <li>• Premium quality fabric</li>
+                      <li>• Authentic team colors and logos</li>
+                      <li>• Comfortable fit for all-day wear</li>
+                      <li>• Machine washable</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>• Premium quality materials</li>
+                      <li>• Comfortable cushioning</li>
+                      <li>• Durable construction</li>
+                      <li>• Authentic Nike design</li>
+                      <li>• Available in multiple sizes</li>
+                    </>
+                  )}
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <Button
+                  className="w-full bg-primary text-black hover:bg-primary/90"
+                  size="lg"
+                  onClick={() => setShowAddToCart(true)}
+                >
+                  Add to Cart - R1500
+                </Button>
+                <p className="text-xs text-center text-muted-foreground">Free delivery nationwide • 30-day returns</p>
               </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Quantity</h3>
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                >
-                  <MinusIcon className="h-4 w-4" />
-                  <span className="sr-only">Decrease quantity</span>
-                </Button>
-                <span className="text-lg font-medium">{quantity}</span>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setQuantity(quantity + 1)}
-                >
-                  <PlusIcon className="h-4 w-4" />
-                  <span className="sr-only">Increase quantity</span>
-                </Button>
-              </div>
-            </div>
-            <Button size="lg" onClick={handleAddToCart}>
-              Add to Cart
-            </Button>
           </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
+
+      <AddToCartDialog product={product} open={showAddToCart} onOpenChange={setShowAddToCart} />
+    </>
   )
 }
