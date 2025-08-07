@@ -1010,9 +1010,11 @@ const otherProducts: Product[] = [
       {
         color: "#ADD8E6",
         colorName: "Light Blue/Orange/Navy",
-        image: "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-pair.jpeg",
+        image: "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-pair-new.jpeg",
         additionalImages: [
           "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-back.jpeg",
+          "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-side-new.jpeg",
+          "/images/sneakers/nike-air-max-plus-drift-light-blue-orange-navy-top-new.jpeg",
         ],
       },
       {
@@ -1763,10 +1765,10 @@ const otherProducts: Product[] = [
       {
         color: "#FFA500",
         colorName: "Orange/Yellow Gradient",
-        image: "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-side.jpeg",
+        image: "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-side-new.jpeg",
         additionalImages: [
-          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-top.jpeg",
-          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-pair.jpeg",
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-top-new.jpeg",
+          "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-pair-new.jpeg",
           "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-side-alt.jpeg",
           "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-top-alt.jpeg",
           "/images/sneakers/nike-air-max-plus-tn-se-orange-yellow-pair-alt.jpeg",
@@ -1868,16 +1870,17 @@ const otherProducts: Product[] = [
     price: 1500,
     category: "sneakers",
     sizes: ["UK 3", "UK 4", "UK 5", "UK 6", "UK 7", "UK 8", "UK 9"],
-    image: "/images/sneakers/nike-air-max-plus-white-side.jpeg",
+    image: "/images/sneakers/nike-air-max-plus-white-side-new.jpeg",
     colorVariants: [
       {
         color: "#FFFFFF",
         colorName: "Triple White",
-        image: "/images/sneakers/nike-air-max-plus-white-side.jpeg",
+        image: "/images/sneakers/nike-air-max-plus-white-side-new.jpeg",
         additionalImages: [
-          "/images/sneakers/nike-air-max-plus-white-top.jpeg",
+          "/images/sneakers/nike-air-max-plus-white-top-new.jpeg",
           "/images/sneakers/nike-air-max-plus-white-profile.jpeg",
           "/images/sneakers/nike-air-max-plus-triple-white-side.jpeg",
+          "/images/sneakers/nike-air-max-plus-white-pair-new.jpeg",
         ],
       },
       {
