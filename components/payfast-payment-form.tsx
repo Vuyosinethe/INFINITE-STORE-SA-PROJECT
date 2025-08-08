@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, CreditCard, Shield, ShoppingCart, AlertCircle, CheckCircle, AlertTriangle, Bug } from "lucide-react"
+import { Loader2, CreditCard, Shield, ShoppingCart, AlertCircle, CheckCircle, AlertTriangle, Bug } from 'lucide-react'
 import { useCart } from "@/components/cart-provider"
 
 interface PaymentFormData {
@@ -203,7 +203,7 @@ export function PayFastPaymentForm({
         const form = document.createElement("form")
         form.method = "POST"
         form.action = result.paymentUrl
-        form.style.display = "none"
+        form.style = "display:none"
 
         // Add all payment data as hidden inputs
         Object.entries(result.paymentData).forEach(([key, value]) => {
@@ -260,57 +260,24 @@ export function PayFastPaymentForm({
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      {/* Debug Information (development only) */}
-      {(isTestEnvironment || debugInfo) && (
-        <Card className="border-blue-200 bg-blue-50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-blue-800">
-              <Bug className="h-5 w-5" />
-              Debug Information
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <div className="text-sm text-blue-700">
-                <strong>Cart Items:</strong> {cartItems.length}
-              </div>
-              <div className="text-sm text-blue-700">
-                <strong>Total:</strong> R{total.toFixed(2)}
-              </div>
-              <div className="text-sm text-blue-700">
-                <strong>Environment:</strong> {process.env.NODE_ENV}
-              </div>
-              <div className="text-sm text-blue-700">
-                <strong>Current URL:</strong> {typeof window !== "undefined" ? window.location.href : "N/A"}
-              </div>
-              {debugInfo && (
-                <div className="text-xs text-blue-600 bg-blue-100 p-2 rounded">
-                  <strong>Status:</strong> {debugInfo}
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
       {/* Payment Environment Info */}
       {paymentEnvironment && (
         <Card
           className={
-            paymentEnvironment === "production" ? "border-green-200 bg-green-50" : "border-orange-200 bg-orange-50"
+            paymentEnvironment === "production" ? "border-green-200 bg-green-50" : ""
           }
         >
           <CardContent className="pt-6">
             <div className="flex items-center gap-2">
               <CheckCircle
-                className={`h-5 w-5 ${paymentEnvironment === "production" ? "text-green-600" : "text-orange-600"}`}
+                className={`h-5 w-5 ${paymentEnvironment === "production" ? "text-green-600" : ""}`}
               />
               <span
-                className={`font-medium ${paymentEnvironment === "production" ? "text-green-800" : "text-orange-800"}`}
+                className={`font-medium ${paymentEnvironment === "production" ? "text-green-800" : ""}`}
               >
                 {paymentEnvironment === "production"
                   ? "🔒 LIVE Payment Environment - Real money will be charged!"
-                  : "⚠️ Sandbox Testing Environment - Safe for testing"}
+                  : ""}
               </span>
             </div>
           </CardContent>
@@ -465,20 +432,9 @@ export function PayFastPaymentForm({
                 <Shield className="h-5 w-5" />
                 Complete Payment
               </CardTitle>
-              <Badge
-                variant="outline"
-                className={
-                  paymentEnvironment === "production"
-                    ? "bg-green-50 text-green-700 border-green-200"
-                    : "bg-orange-50 text-orange-700 border-orange-200"
-                }
-              >
-                {paymentEnvironment === "production" ? "Live Mode" : "Test Mode"}
-              </Badge>
             </div>
             <CardDescription>
               Secure payment processing powered by PayFast
-              {paymentEnvironment === "production" ? " (Live Environment)" : " (Testing Environment)"}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -514,27 +470,6 @@ export function PayFastPaymentForm({
               </div>
             </div>
 
-            {/* Environment Notice */}
-            {paymentEnvironment !== "production" && (
-              <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <div className="space-y-1">
-                  <p className="text-sm font-medium text-orange-800">Test Environment</p>
-                  <p className="text-xs text-orange-700">
-                    This is a test payment using PayFast sandbox. Use test card numbers. No real charges will be made.
-                  </p>
-                  <div className="text-xs text-orange-600 mt-2">
-                    <p>
-                      <strong>Test Cards:</strong>
-                    </p>
-                    <p>• Success: 4000000000000002 (Visa)</p>
-                    <p>• Decline: 4000000000000010 (Insufficient funds)</p>
-                    <p>• CVV: Any 3 digits • Expiry: Any future date</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
             {/* Error Display */}
             {error && (
               <Alert variant="destructive">
@@ -557,7 +492,7 @@ export function PayFastPaymentForm({
               ) : (
                 <>
                   <CreditCard className="mr-2 h-5 w-5" />
-                  {paymentEnvironment === "production" ? "Pay" : "Test Pay"} R{total.toFixed(2)} with PayFast
+                  Pay R{total.toFixed(2)} with PayFast
                 </>
               )}
             </Button>
@@ -571,10 +506,7 @@ export function PayFastPaymentForm({
             </div>
 
             <p className="text-xs text-center text-muted-foreground">
-              By clicking "{paymentEnvironment === "production" ? "Pay" : "Test Pay"}", you will be redirected to
-              PayFast's {paymentEnvironment === "production" ? "secure payment" : "sandbox"} environment to complete
-              your {paymentEnvironment === "production" ? "" : "test "}transaction. Your cart will be cleared and order
-              details saved for tracking.
+              By clicking "Pay", you will be redirected to PayFast's secure payment environment to complete your transaction. Your cart will be cleared and order details saved for tracking.
             </p>
           </CardContent>
         </Card>
