@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 export default function AboutPage() {
   return (
@@ -57,7 +57,7 @@ export default function AboutPage() {
               <Phone className="h-8 w-8 mx-auto mb-3 text-primary" />
               <h3 className="font-semibold mb-2">Phone</h3>
               <p className="text-sm text-muted-foreground">
-                +27 (0) 21 123 4567
+                +27 73 762 4156
                 <br />
                 WhatsApp Available
               </p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+27211234567"
+              href="tel:+27737624156"
               className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
             >
               Call Us Now
