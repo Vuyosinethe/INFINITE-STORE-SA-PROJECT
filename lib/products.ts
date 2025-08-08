@@ -25,7 +25,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 114,
     name: "Arsenal 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/arsenal-2526-home-main.jpeg",
@@ -38,7 +38,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 115,
     name: "AC Milan 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/ac-milan-2526-home-front.jpeg",
@@ -51,7 +51,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 116,
     name: "Chelsea 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/chelsea-2526-home-main.jpeg",
@@ -63,7 +63,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 117,
     name: "Chelsea 25/26 Away Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/chelsea-2526-away-front.jpeg",
@@ -76,7 +76,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 118,
     name: "Bayern Munich 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/bayern-munich-2526-home-front.jpeg",
@@ -89,7 +89,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 119,
     name: "FC Barcelona 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/barcelona-2526-home-front.jpeg",
@@ -102,7 +102,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 120,
     name: "Juventus 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/juventus-2526-home-front.jpeg",
@@ -115,7 +115,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 121,
     name: "Manchester City 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-city-2526-home-front.jpeg",
@@ -127,7 +127,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 122,
     name: "Manchester United 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-united-2526-home-front.jpeg",
@@ -140,7 +140,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 123,
     name: "Paris Saint-Germain 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/psg-2526-home-front.jpeg",
@@ -153,7 +153,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 124,
     name: "Real Madrid 25/26 Away Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/real-madrid-2526-away-front.jpeg",
@@ -166,7 +166,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 125,
     name: "Real Madrid 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/real-madrid-2526-home-main.jpeg",
@@ -183,7 +183,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 126,
     name: "Tottenham Hotspur 25/26 Home Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/tottenham-2526-home-main.jpeg",
@@ -197,7 +197,7 @@ const newSeasonJerseys: Product[] = [
   {
     id: 127,
     name: "Tottenham Hotspur 25/26 Away Jersey",
-    price: 1600,
+    price: 1300,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/tottenham-2526-away-main.jpeg",
@@ -326,7 +326,7 @@ const otherProducts: Product[] = [
   {
     id: 11,
     name: "Arsenal 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/arsenal-2425-home-front.jpeg",
@@ -338,7 +338,7 @@ const otherProducts: Product[] = [
   {
     id: 12,
     name: "Arsenal 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/arsenal-2425-away-front.jpeg",
@@ -350,7 +350,7 @@ const otherProducts: Product[] = [
   {
     id: 13,
     name: "AC Milan 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/ac-milan-2425-home-front.jpeg",
@@ -362,7 +362,7 @@ const otherProducts: Product[] = [
   {
     id: 14,
     name: "AC Milan 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/ac-milan-2425-away-front.jpeg",
@@ -374,7 +374,7 @@ const otherProducts: Product[] = [
   {
     id: 15,
     name: "Aston Villa 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/aston-villa-2425-home-front.jpeg",
@@ -386,7 +386,7 @@ const otherProducts: Product[] = [
   {
     id: 16,
     name: "Atletico Madrid 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/atletico-madrid-2425-home-front.jpeg",
@@ -398,7 +398,7 @@ const otherProducts: Product[] = [
   {
     id: 17,
     name: "Atletico Madrid 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/atletico-madrid-2425-away-front.jpeg",
@@ -410,7 +410,7 @@ const otherProducts: Product[] = [
   {
     id: 18,
     name: "Borussia Dortmund 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/bvb-2425-home-front.jpeg",
@@ -422,7 +422,7 @@ const otherProducts: Product[] = [
   {
     id: 19,
     name: "Borussia Dortmund 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/bvb-2425-away-front.jpeg",
@@ -434,7 +434,7 @@ const otherProducts: Product[] = [
   {
     id: 20,
     name: "Chelsea 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/chelsea-2425-away-front.jpeg",
@@ -446,7 +446,7 @@ const otherProducts: Product[] = [
   {
     id: 21,
     name: "FC Barcelona 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/barcelona-2425-home-front.jpeg",
@@ -458,7 +458,7 @@ const otherProducts: Product[] = [
   {
     id: 22,
     name: "FC Barcelona 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/barcelona-2425-away-front.jpeg",
@@ -470,7 +470,7 @@ const otherProducts: Product[] = [
   {
     id: 23,
     name: "FC Barcelona 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/barcelona-2425-third-front.jpeg",
@@ -482,7 +482,7 @@ const otherProducts: Product[] = [
   {
     id: 24,
     name: "Chelsea 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/chelsea-2425-home-front.jpeg",
@@ -494,7 +494,7 @@ const otherProducts: Product[] = [
   {
     id: 25,
     name: "Chelsea 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/chelsea-2425-third-front.jpeg",
@@ -506,7 +506,7 @@ const otherProducts: Product[] = [
   {
     id: 26,
     name: "Inter Milan 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/inter-milan-2425-home-front.jpeg",
@@ -518,7 +518,7 @@ const otherProducts: Product[] = [
   {
     id: 27,
     name: "Inter Milan 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/inter-milan-2425-away-front.jpeg",
@@ -530,7 +530,7 @@ const otherProducts: Product[] = [
   {
     id: 28,
     name: "Bayern Munich 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/bayern-munich-2425-home-front.jpeg",
@@ -542,7 +542,7 @@ const otherProducts: Product[] = [
   {
     id: 29,
     name: "Bayern Munich 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/bayern-munich-2425-away-front.jpeg",
@@ -554,7 +554,7 @@ const otherProducts: Product[] = [
   {
     id: 30,
     name: "Bayern Munich 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/bayern-munich-2425-third-front.png",
@@ -566,7 +566,7 @@ const otherProducts: Product[] = [
   {
     id: 31,
     name: "Inter Milan 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/inter-milan-2425-third-front.jpeg",
@@ -578,7 +578,7 @@ const otherProducts: Product[] = [
   {
     id: 32,
     name: "Juventus 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/juventus-2425-home-front.jpeg",
@@ -590,7 +590,7 @@ const otherProducts: Product[] = [
   {
     id: 33,
     name: "Juventus 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/juventus-2425-away-front.jpeg",
@@ -602,7 +602,7 @@ const otherProducts: Product[] = [
   {
     id: 34,
     name: "Kaizer Chiefs 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/kaizer-chiefs-2425-home-front.jpeg",
@@ -614,7 +614,7 @@ const otherProducts: Product[] = [
   {
     id: 35,
     name: "Kaizer Chiefs 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/kaizer-chiefs-2425-away-front.jpeg",
@@ -626,7 +626,7 @@ const otherProducts: Product[] = [
   {
     id: 36,
     name: "Liverpool 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/liverpool-2425-home-front.jpeg",
@@ -638,7 +638,7 @@ const otherProducts: Product[] = [
   {
     id: 37,
     name: "Liverpool 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/liverpool-2425-away-front.jpeg",
@@ -650,7 +650,7 @@ const otherProducts: Product[] = [
   {
     id: 38,
     name: "Liverpool 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/liverpool-2425-third-front.jpeg",
@@ -662,7 +662,7 @@ const otherProducts: Product[] = [
   {
     id: 39,
     name: "Manchester City 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-city-2425-home-front.jpeg",
@@ -674,7 +674,7 @@ const otherProducts: Product[] = [
   {
     id: 40,
     name: "Manchester City 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-city-2425-third-front.jpeg",
@@ -686,7 +686,7 @@ const otherProducts: Product[] = [
   {
     id: 41,
     name: "Manchester City 24/25 Fourth Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-city-2425-fourth-front.jpeg",
@@ -698,7 +698,7 @@ const otherProducts: Product[] = [
   {
     id: 42,
     name: "Manchester United 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-united-2425-away-front.jpeg",
@@ -710,7 +710,7 @@ const otherProducts: Product[] = [
   {
     id: 43,
     name: "Manchester United 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-united-2425-home-front.jpeg",
@@ -722,7 +722,7 @@ const otherProducts: Product[] = [
   {
     id: 44,
     name: "Manchester United 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/manchester-united-2425-third-front.jpeg",
@@ -734,7 +734,7 @@ const otherProducts: Product[] = [
   {
     id: 45,
     name: "Newcastle United 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/newcastle-2425-home-front.jpeg",
@@ -746,7 +746,7 @@ const otherProducts: Product[] = [
   {
     id: 46,
     name: "Newcastle United 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/newcastle-2425-third-front.jpeg",
@@ -758,7 +758,7 @@ const otherProducts: Product[] = [
   {
     id: 47,
     name: "Marseille 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/marseille-2425-home-front.jpeg",
@@ -769,7 +769,7 @@ const otherProducts: Product[] = [
   {
     id: 48,
     name: "Marseille 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/marseille-2425-away-front.jpeg",
@@ -781,7 +781,7 @@ const otherProducts: Product[] = [
   {
     id: 49,
     name: "Orlando Pirates 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/orlando-pirates-2425-home-front.jpeg",
@@ -793,7 +793,7 @@ const otherProducts: Product[] = [
   {
     id: 50,
     name: "Orlando Pirates 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/orlando-pirates-2425-away-front.jpeg",
@@ -805,7 +805,7 @@ const otherProducts: Product[] = [
   {
     id: 51,
     name: "Paris Saint-Germain 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/psg-2425-home-front.jpeg",
@@ -817,7 +817,7 @@ const otherProducts: Product[] = [
   {
     id: 52,
     name: "Paris Saint-Germain 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/psg-2425-away-front.jpeg",
@@ -829,7 +829,7 @@ const otherProducts: Product[] = [
   {
     id: 53,
     name: "Paris Saint-Germain 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/psg-2425-third-front.jpeg",
@@ -841,7 +841,7 @@ const otherProducts: Product[] = [
   {
     id: 54,
     name: "Real Madrid 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/real-madrid-2425-home-front.jpeg",
@@ -853,7 +853,7 @@ const otherProducts: Product[] = [
   {
     id: 55,
     name: "Real Madrid 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/real-madrid-2425-away-front.jpeg",
@@ -865,7 +865,7 @@ const otherProducts: Product[] = [
   {
     id: 56,
     name: "Real Madrid 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/real-madrid-2425-third-front.jpeg",
@@ -877,7 +877,7 @@ const otherProducts: Product[] = [
   {
     id: 57,
     name: "RB Leipzig 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/rb-leipzig-2425-home-front.jpeg",
@@ -889,7 +889,7 @@ const otherProducts: Product[] = [
   {
     id: 58,
     name: "SSC Napoli 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/napoli-2425-home-front.jpeg",
@@ -901,7 +901,7 @@ const otherProducts: Product[] = [
   {
     id: 59,
     name: "SSC Napoli 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/napoli-2425-away-front.jpeg",
@@ -913,7 +913,7 @@ const otherProducts: Product[] = [
   {
     id: 60,
     name: "Tottenham Hotspur 24/25 Home Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/tottenham-2425-home-front.jpeg",
@@ -925,7 +925,7 @@ const otherProducts: Product[] = [
   {
     id: 61,
     name: "Tottenham Hotspur 24/25 Away Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/tottenham-2425-away-front.jpeg",
@@ -937,7 +937,7 @@ const otherProducts: Product[] = [
   {
     id: 62,
     name: "Tottenham Hotspur 24/25 Third Jersey",
-    price: 1500,
+    price: 850,
     category: "football-tees",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     image: "/images/jerseys/tottenham-2425-third-front.jpeg",
